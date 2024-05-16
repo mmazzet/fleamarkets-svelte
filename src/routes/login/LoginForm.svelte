@@ -10,6 +10,16 @@
   let message = "";
 
   async function login() {
+    if (!isValidEmail(email)) {
+      message = "Invalid email format";
+      return;
+    }
+
+    if (!isValidPassword(password)) {
+      message = "Password must be at least 6 characters long";
+      return;
+    }
+
     console.log(`attemting to log in email: ${email} with password: ${password}`);
     let session = await fleamarketService.login(email, password);
     if (session) {
@@ -21,6 +31,15 @@
       password = "";
       message = "Invalid Credentials";
     }
+  }
+
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  function isValidPassword(password: string) {
+    return password.length >= 6;
   }
 </script>
 

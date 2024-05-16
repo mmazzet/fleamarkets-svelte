@@ -3,6 +3,9 @@
   import UserCredentials from "$lib/ui/UserCredentials.svelte";
   import UserDetails from "$lib/ui/UserDetails.svelte";
   import Message from "$lib/ui/Message.svelte";
+  import { fleamarketService } from "$lib/services/fleamarket-service";
+  import sanitizeHtml from "sanitize-html";
+  
 
   let firstName = "";
   let lastName = "";
@@ -11,12 +14,35 @@
   let message = "";
 
   async function signup() {
-    const success = false;
+    if (!isValidEmail(email)) {
+      message = "Invalid email format";
+      return;
+    }
+
+    if (!isValidPassword(password)) {
+      message = "Password must be at least 6 characters long";
+      return;
+    }
+
+    const sanitizedFirstName = sanitizeHtml(firstName);
+    const sanitizedLastName = sanitizeHtml(lastName);
+
+    let user = { firstName: sanitizedFirstName, lastName: sanitizedLastName, email, password };
+    let success = await fleamarketService.signup(user);
     if (success) {
-      goto("/addmarket");
+      goto("/login");
     } else {
       message = "Error Trying to sign up";
     }
+  }
+
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  function isValidPassword(password: string) {
+    return password.length >= 6;
   }
 </script>
 

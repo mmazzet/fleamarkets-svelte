@@ -4,6 +4,7 @@
   import { currentSession, latestFleamarket } from "$lib/stores";
   import Coordinates from "$lib/ui/Coordinates.svelte";
   import { get } from "svelte/store";
+  import sanitizeHtml from "sanitize-html";
 
   export let countryList: Country[] = [];
 
@@ -14,17 +15,32 @@
   let categories = ["paypal", "direct"];
   let selectedCategory = "";
   let message = "Please Add Market";
+  let errorMessage = "";
 
   async function addmarket() {
+    if (!isValidInput(marketname)) {
+      errorMessage = "Invalid characters in market name";
+      return;
+    }
+    if (marketname.length > 40) { 
+        errorMessage = "Market name is too long, max 40 chars allowed";
+        return;
+    }
+    if (!isValidNumber(parseFloat(lat), -90, 90) || !isValidNumber(parseFloat(lng), -180, 180)) {
+        errorMessage = "Latitude must be between -90 and 90, and longitude must be between -180 and 180";
+        return;
+}
     if (selectedCountry && marketname && selectedCategory) {
       const country = countryList.find((country) => country._id === selectedCountry);
+      
       if (country) {
+        const sanitizedMarketname = sanitizeHtml(marketname);
         const fleamarket: Fleamarket = {
-          marketname: marketname,
+          marketname: sanitizedMarketname,
           category: selectedCategory,
           country: selectedCountry,
-          lat: lat,
-          lng: lng,
+          lat: parseFloat(lat as string), 
+          lng: parseFloat(lng as string), 
           donor: $currentSession._id
         };
         const success = await fleamarketService.addmarket(fleamarket, get(currentSession));
@@ -35,12 +51,23 @@
         fleamarket.country = country;
         fleamarket.donor = $currentSession.name;
         latestFleamarket.set(fleamarket);
-        message = `Thanks! You added ${marketname} to ${country.firstName} ${country.lastName}`;
+        message = `Thanks! You added ${sanitizedMarketname} to ${country.firstName} ${country.lastName}`;
       }
     } else {
       message = "Please select market name, category and country";
     }
   }
+
+  function isValidInput(input: string): boolean {
+    const regex = /^[a-zA-Z0-9\s]+$/;
+    return regex.test(input);
+  }
+
+  function isValidNumber(input: number, min: number, max: number): boolean {
+  return !isNaN(input) && isFinite(input) &&
+         input >= min && input <= max;
+}
+
 </script>
 
 <form on:submit|preventDefault={addmarket}>
@@ -75,6 +102,10 @@
 </form>
 <div class="box mt-4">
   <div class="content has-text-centered">
+    {#if errorMessage}
+      <p class="has-text-danger">{errorMessage}</p>
+    {/if}
     {message}
   </div>
 </div>
+
