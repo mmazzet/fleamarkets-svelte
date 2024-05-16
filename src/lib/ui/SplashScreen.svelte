@@ -5,6 +5,7 @@
       <div class="columns is-vcentered">
         <div class="column is-5">
           <figure class="image">
+            <!-- svelte-ignore a11y-img-redundant-alt -->
             <img class="object-fit" src="/market-main.jpg" alt="flea market image" />
           </figure>
         </div>

@@ -6,10 +6,12 @@
 
 <table class="table is-fullwidth">
   <thead>
-    <th> Flea Market Name</th>
+    <th>Flea Market Name</th>
     <th>Category</th>
     <th>Country</th>
     <th>Donor</th>
+    <th>Edit</th>
+    <th>Upload image</th>
   </thead>
   <tbody>
     {#each fleamarkets as fleamarket}
