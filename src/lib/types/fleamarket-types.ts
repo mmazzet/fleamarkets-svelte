@@ -13,9 +13,7 @@ export interface User {
 }
 
 export interface Country {
-  firstName: string;
-  lastName: string;
-  office: string;
+  countryname: string;
   _id: string;
 }
 

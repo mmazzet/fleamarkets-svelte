@@ -51,7 +51,7 @@
         fleamarket.country = country;
         fleamarket.donor = $currentSession.name;
         latestFleamarket.set(fleamarket);
-        message = `Thanks! You added ${sanitizedMarketname} to ${country.firstName} ${country.lastName}`;
+        message = `Thanks! You added ${sanitizedMarketname} to ${country.countryname}`;
       }
     } else {
       message = "Please select market name, category and country";
@@ -88,7 +88,7 @@
     <div class="select">
       <select bind:value={selectedCountry}>
         {#each countryList as country}
-          <option value={country._id}>{country.lastName},{country.firstName}</option>
+          <option value={country._id}>{country.countryname}</option>
         {/each}
       </select>
     </div>

@@ -21,9 +21,9 @@
           {fleamarket.category}
         </td>
         <td>
-          {#if typeof fleamarket.country !== "string"}
-            {fleamarket.country.lastName}, {fleamarket.country.firstName}
-          {/if}
+          {#if fleamarket.country}
+          {fleamarket.country.countryname}
+        {/if}
         </td>
         <td>
           {#if typeof fleamarket.donor !== "string"}
