@@ -31,6 +31,9 @@
       <FleamarketList {fleamarkets} />
     </Card>
   </div>
+</div>
+
+<div class="columns">
   <div class="column">
     <Card title="Please Add a Flea Market">
       <AddmarketForm {countryList} />

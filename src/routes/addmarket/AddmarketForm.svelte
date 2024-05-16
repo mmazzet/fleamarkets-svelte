@@ -12,7 +12,7 @@
   let lat = 52.160858;
   let lng = -7.15242;
   let selectedCountry = "";
-  let categories = ["paypal", "direct"];
+  let categories = ["Antiques", "Vintage Clothes", "Bric-a-Brac", "Other"];
   let selectedCategory = "";
   let message = "Please Add Market";
   let errorMessage = "";
