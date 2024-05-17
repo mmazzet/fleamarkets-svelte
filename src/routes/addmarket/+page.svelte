@@ -14,13 +14,17 @@
 
   onMount(async () => {
     countryList = await fleamarketService.getCountries(get(currentSession));
+    console.log("Country List:", countryList);
     fleamarkets = await fleamarketService.getFleamarkets(get(currentSession));
+    console.log("Fleamarkets:", fleamarkets);
   });
 
   latestFleamarket.subscribe(async (fleamarket) => {
+    console.log("Latest Fleamarket:", fleamarket);
     if (fleamarket) {
       fleamarkets.push(fleamarket);
       fleamarkets = [...fleamarkets];
+      console.log("Updated Fleamarkets:", fleamarkets);
     }
   });
 </script>

@@ -18,6 +18,7 @@
   let errorMessage = "";
 
   async function addmarket() {
+    console.log("Selected Country:", selectedCountry);
     if (!isValidInput(marketname)) {
       errorMessage = "Invalid characters in market name";
       return;

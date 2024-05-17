@@ -22,11 +22,13 @@
         <td>
           {fleamarket.category}
         </td>
-        <td>
-          {#if fleamarket.country}
-          {fleamarket.country.countryname}
-        {/if}
-        </td>
+          <td>
+            {#if typeof fleamarket.country !== "string"}
+              {fleamarket.country.countryname}
+            {:else}
+              {fleamarket.country} 
+            {/if}
+          </td>
         <td>
           {#if typeof fleamarket.donor !== "string"}
             {fleamarket.donor.lastName}, {fleamarket.donor.firstName}
