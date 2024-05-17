@@ -34,20 +34,18 @@ export function generateByCountry(fleamarketList: Fleamarket[], countries: Count
     ]
   };
 
-  fleamarketsByCountry.labels = [];
-  countries.forEach((country) => {
-    fleamarketsByCountry.labels.push(country.countryname);
-    fleamarketsByCountry.datasets[0].values.push(0);
-  });
+  fleamarketsByCountry.labels = countries.map(country => country.countryname);
+  fleamarketsByCountry.datasets[0].values = new Array(countries.length).fill(0);
 
   countries.forEach((country, i) => {
     fleamarketList.forEach((fleamarket) => {
-      if (fleamarket.country !== "string") {
-        if (fleamarket.country._id == country._id) {
+      if (typeof fleamarket.country === "string" && fleamarket.country === country.countryname) {
+        fleamarketsByCountry.datasets[0].values[i] += 1;
+      } else if (typeof fleamarket.country === "object" && fleamarket.country._id === country._id) {
         fleamarketsByCountry.datasets[0].values[i] += 1;
       }
-    }
+    });
   });
-});
-return fleamarketsByCountry;
+
+  return fleamarketsByCountry;
 }

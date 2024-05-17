@@ -9,8 +9,8 @@
   export let countryList: Country[] = [];
 
   let marketname = "";
-  let lat = 52.160858;
-  let lng = -7.15242;
+  let lat = "";
+  let lng = "";
   let selectedCountry = "";
   let categories = ["Antiques", "Vintage Clothes", "Bric-a-Brac", "Other"];
   let selectedCategory = "";
