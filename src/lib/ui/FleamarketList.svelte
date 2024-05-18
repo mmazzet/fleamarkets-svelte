@@ -34,10 +34,8 @@
               {fleamarket.donor}
             {/if}
           </div>
-          <!-- Add UploadWidget component with on:upload event -->
           <div class="content">
-            <!-- Pass fleamarket to the UploadWidget component -->
-            <UploadWidget on:upload={(e) => handleUpload(e.detail.url, fleamarket)} />
+            <UploadWidget />
           </div>
         </div>
       </div>
