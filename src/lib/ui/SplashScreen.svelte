@@ -17,10 +17,10 @@
           <h2 class="subtitle is-4 mt-2">Keep Track of your favourite Flea Markets!</h2>
           <p class="has-text-centered">
             <a class="button is-medium is-success" href="/signup">
-              <span class="icon"><i class="fas fa-plus"></i></span><span>Sign Up</span>
+              <span class="icon"><i class="fas fa-user-plus"></i></span><span>Sign Up</span>
             </a>
             <a class="button is-medium is-link" href="/login">
-              <span class="icon"><i class="fas fa-sign-in"></i></span><span>Login</span>
+              <span class="icon"><i class="fas fa-sign-in-alt"></i></span><span>Login</span>
             </a>
           </p>
         </div>
