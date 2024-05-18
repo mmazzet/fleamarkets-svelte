@@ -27,14 +27,6 @@
             {/if}
           </div>
           <div class="content">
-            <strong>Donor:</strong> 
-            {#if typeof fleamarket.donor !== "string"}
-              {fleamarket.donor.lastName}, {fleamarket.donor.firstName}
-            {:else}
-              {fleamarket.donor}
-            {/if}
-          </div>
-          <div class="content">
             <UploadWidget />
           </div>
         </div>

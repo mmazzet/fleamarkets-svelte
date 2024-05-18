@@ -42,7 +42,6 @@
           country: selectedCountry,
           lat: parseFloat(lat as string), 
           lng: parseFloat(lng as string), 
-          donor: $currentSession._id
         };
         const success = await fleamarketService.addmarket(fleamarket, get(currentSession));
         if (!success) {
@@ -50,7 +49,6 @@
           return;
         }
         fleamarket.country = country;
-        fleamarket.donor = $currentSession.name;
         latestFleamarket.set(fleamarket);
         message = `Thanks! You added ${sanitizedMarketname} to ${country.countryname}`;
       }

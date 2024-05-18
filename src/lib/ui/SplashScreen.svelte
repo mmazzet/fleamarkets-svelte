@@ -11,10 +11,10 @@
         </div>
         <div class="column is-6 is-offset-1">
           <h1 class="title is-2 mb-5">
-            <span class="icon mr-5"><i class="fas fa-map-marker-alt"></i></span><span class="icon mr-4"><i class="fas fa-vote-yea"></i></span>
+            <span class="icon mr-5"><i class="fas fa-store"></i></span>
             <p>Flea Markets</p>
           </h1>
-          <h2 class="subtitle is-4 mt-2">Keep Track of your favourite Flea Marketsd!</h2>
+          <h2 class="subtitle is-4 mt-2">Keep Track of your favourite Flea Markets!</h2>
           <p class="has-text-centered">
             <a class="button is-medium is-success" href="/signup">
               <span class="icon"><i class="fas fa-plus"></i></span><span>Sign Up</span>

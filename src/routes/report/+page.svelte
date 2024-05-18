@@ -18,7 +18,6 @@
     <th>Flea Market Name</th>
     <th>Category</th>
     <th>Country</th>
-    <th>Donor</th>
   </thead>
   <tbody>
     {#each fleamarkets as fleamarket}
@@ -36,13 +35,6 @@
               {fleamarket.country} 
             {/if}
           </td>
-        <td>
-          {#if typeof fleamarket.donor !== "string"}
-            {fleamarket.donor.lastName}, {fleamarket.donor.firstName}
-          {:else}
-            {fleamarket.donor}
-          {/if}
-        </td>
       </tr>
     {/each}
   </tbody>
