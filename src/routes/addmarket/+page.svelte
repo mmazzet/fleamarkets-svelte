@@ -27,20 +27,24 @@
       console.log("Updated Fleamarkets:", fleamarkets);
     }
   });
+
+  function handleUpload(url: string, market: Fleamarket) {
+    market.imageUrl = url;
+  }
 </script>
 
 <div class="columns">
   <div class="column">
-    <Card title="Your List of Flea Markets">
-      <FleamarketList {fleamarkets} />
+    <Card title="Please Add a Flea Market">
+      <AddmarketForm {countryList} />
     </Card>
   </div>
 </div>
 
 <div class="columns">
   <div class="column">
-    <Card title="Please Add a Flea Market">
-      <AddmarketForm {countryList} />
+    <Card title="Your List of Flea Markets">
+      <FleamarketList {fleamarkets} on:upload={handleUpload} />
     </Card>
   </div>
 </div>
