@@ -3,7 +3,7 @@ import type { Session, User } from "$lib/types/fleamarket-types";
 import type { Country, Fleamarket } from "$lib/types/fleamarket-types";
 
 export const fleamarketService = {
-  baseUrl: "http://localhost:4000",
+  baseUrl: "https://fleamarkets-hapi.onrender.com",
 
   async signup(user: User): Promise<boolean> {
     try {
